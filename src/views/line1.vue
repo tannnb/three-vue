@@ -19,6 +19,9 @@ export default defineComponent({
       initLight()
       initSceneHelp()
       initStats()
+
+      initLineCenter()
+
       initControls()
       initLine()
       animate()
@@ -28,6 +31,21 @@ export default defineComponent({
     onUnmounted(() => {
       window.removeEventListener('resize', resize, false)
     })
+
+    const initLineCenter = () => {
+      const line = new THREE.Line3(
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(5, 5, 5)
+      )
+      const centerOfLine = new THREE.Vector3()
+      line.getCenter(centerOfLine)
+      console.log('Line3中心点为:', centerOfLine)
+      console.log('Line3线段长度:', line.distance())
+      const start = new THREE.Vector3(1, 1, 1)
+      const end = new THREE.Vector3(4, 4, 4)
+      const dis = start.distanceTo(end)
+      console.log('2个坐标点之间距离', dis)
+    }
 
     const initLine = () => {
       const geometry = new THREE.Geometry() // 几何体对象,几何体的vertices变量来存储点
