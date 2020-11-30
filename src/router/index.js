@@ -18,6 +18,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "vector" */ '../views/vector.vue')
   },
   {
+    path: '/camera1',
+    name: 'camera1',
+    component: () => import(/* webpackChunkName: "camera1" */ '../views/camera1.vue')
+  },
+  {
     path: '/line1',
     name: 'line1',
     component: () => import(/* webpackChunkName: "line1" */ '../views/line1.vue')
