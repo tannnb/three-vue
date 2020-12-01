@@ -16,8 +16,8 @@ export default defineComponent({
     onMounted(() => {
       initWebglRender()
       initScene()
-      // initPerspective()
-      initOrthographic()
+      initPerspective()
+      // initOrthographic()
       initLight()
       initSceneHelp()
       initStats()
@@ -66,9 +66,14 @@ export default defineComponent({
     }
 
     const initOrthographic = () => {
-      camera = new THREE.OrthographicCamera(-window.innerWidth / 2, window.innerWidth / 2, -window.innerHeight / 2, window.innerHeight, 0.1, 1000)
-      camera.position.set(100, 300, 100)
-      // camera.lookAt(scene.position)
+      const width = window.innerWidth // 窗口宽度
+      const height = window.innerHeight // 窗口高度
+      const aspect = width / height // 窗口宽高比
+      const scale = 200 // 缩放系数
+      camera = new THREE.OrthographicCamera(-scale * aspect, scale * aspect, scale, -scale, 0.1, 10000)
+      camera.position.set(100, 300, 0)
+      camera.up.set(0, 1, 0)
+      camera.lookAt(scene.position)
     }
 
     const initWebglRender = () => {
@@ -113,7 +118,6 @@ export default defineComponent({
 
     const animate = () => {
       stats.update()
-      camera.updateProjectionMatrix()
       requestAnimationFrame(animate)
       renderer.render(scene, camera)
     }
