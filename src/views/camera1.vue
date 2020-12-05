@@ -35,7 +35,7 @@ export default defineComponent({
     })
 
     const initPlan = () => {
-      const cylinder = new THREE.CylinderGeometry(20, 30, 100)
+      const cylinder = new THREE.CylinderGeometry(30, 30, 100, 100)
       const material = new THREE.MeshLambertMaterial({ color: 0xff0000 })
       const mesh = new THREE.Mesh(cylinder, material)
       scene.add(mesh)
@@ -71,8 +71,7 @@ export default defineComponent({
       const aspect = width / height // 窗口宽高比
       const scale = 200 // 缩放系数
       camera = new THREE.OrthographicCamera(-scale * aspect, scale * aspect, scale, -scale, 0.1, 10000)
-      camera.position.set(100, 300, 0)
-      camera.up.set(0, 1, 0)
+      camera.position.set(100, 300, 100)
       camera.lookAt(scene.position)
     }
 
@@ -108,6 +107,7 @@ export default defineComponent({
       controls && controls.dispose()
       controls = new OrbitControls(camera, renderer.domElement)
       controls.enableDamping = true
+      // controls.target.set(-200, 0, 0)
     }
 
     const resize = () => {
