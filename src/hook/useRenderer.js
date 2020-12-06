@@ -21,6 +21,7 @@ export function useScene () {
 export function useStats () {
   const stats = new Stats()
   document.body.appendChild(stats.dom)
+  return stats
 }
 
 export function useResize (camera, renderer) {

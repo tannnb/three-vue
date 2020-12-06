@@ -36,6 +36,16 @@ const routes = [
     path: '/light1',
     name: 'light1',
     component: () => import(/* webpackChunkName: "light1" */ '../views/light1.vue')
+  },
+  {
+    path: '/geometry1',
+    name: 'geometry1',
+    component: () => import(/* webpackChunkName: "geometry1" */ '../views/geometry1.vue')
+  },
+  {
+    path: '/geometry2',
+    name: 'geometry2',
+    component: () => import(/* webpackChunkName: "geometry2" */ '../views/geometry2.vue')
   }
 ]
 
